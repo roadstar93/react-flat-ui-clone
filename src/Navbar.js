@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Slider from "rc-slider";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
@@ -19,7 +20,7 @@ export default class Navbar extends Component {
     this.closeSnackbar = this.closeSnackbar.bind(this);
   }
   handleFormatChange(e) {
-    this.setState({ format: e.target.value, open:true });
+    this.setState({ format: e.target.value, open: true });
     this.props.handleChange(e.target.value);
   }
   closeSnackbar() {
@@ -31,7 +32,7 @@ export default class Navbar extends Component {
     return (
       <header className="Navbar">
         <div className="logo">
-          <a href="/">ReactColorPicker</a>
+          <Link to="/">ReactColorPicker</Link>
         </div>
         <div className="slider-container">
           <span>Level: {level}</span>
@@ -64,7 +65,12 @@ export default class Navbar extends Component {
           ContentProps={{ "aria-describedby": "message-id" }}
           onClose={this.closeSnackbar}
           action={[
-            <IconButton onClick={this.closeSnackbar} color="inherit" key={"close"} aria-label="close">
+            <IconButton
+              onClick={this.closeSnackbar}
+              color="inherit"
+              key={"close"}
+              aria-label="close"
+            >
               <CloseIcon />
             </IconButton>
           ]}
