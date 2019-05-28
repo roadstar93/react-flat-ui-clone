@@ -25,7 +25,7 @@ export default class SinglePaletteColor extends Component {
       );
     }
     //return all shades of given color
-    return shades;
+    return shades.slice(1);
   }
   changeColorFormat(val) {
     this.setState({ format: val });
@@ -50,7 +50,9 @@ export default class SinglePaletteColor extends Component {
         <div className="Palette-colors">
           {colorBoxes}
           <div className="go-back ColorBox">
-            <Link to={`/palette/${id}`} className="back-button">Go Back</Link>
+            <Link to={`/palette/${id}`} className="back-button">
+              Go Back
+            </Link>
           </div>
         </div>
         <PaletteFooter paletteName={paletteName} emoji={emoji} />
