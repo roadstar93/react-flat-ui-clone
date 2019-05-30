@@ -7,7 +7,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import "rc-slider/assets/index.css"; //This needs to be before our style so if we change something it will apply our style
-import "./Palette.css";
+
 
 export default class Navbar extends Component {
   constructor(props) {
