@@ -87,6 +87,7 @@ class NewPaletteForm extends Component {
     this.updateCurrentColor = this.updateCurrentColor.bind(this);
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
     ValidatorForm.addValidationRule("isColorNameUnique", value =>
@@ -122,6 +123,17 @@ class NewPaletteForm extends Component {
     this.setState({ newName: evt.target.value });
   }
 
+  handleSubmit() {
+    let newName = "New test palette"
+    const NewPalette = {
+      paletteName: newName,
+      id: newName.toLowerCase().replace(/ /g, "-"),
+      colors: this.state.colors
+    };
+    this.props.savePalette(NewPalette);
+    this.props.history.push("/");
+  }
+
   render() {
     const { classes } = this.props;
     const { open } = this.state;
@@ -130,29 +142,37 @@ class NewPaletteForm extends Component {
       <div className={classes.root}>
         <CssBaseline />
         <AppBar
-          position='fixed'
+          color="default"
+          position="fixed"
           className={classNames(classes.appBar, {
             [classes.appBarShift]: open
           })}
         >
           <Toolbar disableGutters={!open}>
             <IconButton
-              color='inherit'
-              aria-label='Open drawer'
+              color="inherit"
+              aria-label="Open drawer"
               onClick={this.handleDrawerOpen}
               className={classNames(classes.menuButton, open && classes.hide)}
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant='h6' color='inherit' noWrap>
+            <Typography variant="h6" color="inherit" noWrap>
               Persistent drawer
             </Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.handleSubmit}
+            >
+              Save Palette
+            </Button>
           </Toolbar>
         </AppBar>
         <Drawer
           className={classes.drawer}
-          variant='persistent'
-          anchor='left'
+          variant="persistent"
+          anchor="left"
           open={open}
           classes={{
             paper: classes.drawerPaper
@@ -164,12 +184,12 @@ class NewPaletteForm extends Component {
             </IconButton>
           </div>
           <Divider />
-          <Typography variant='h4'>Design Your Palette</Typography>
+          <Typography variant="h4">Design Your Palette</Typography>
           <div>
-            <Button variant='contained' color='secondary'>
+            <Button variant="contained" color="secondary">
               Clear Palette
             </Button>
-            <Button variant='contained' color='primary'>
+            <Button variant="contained" color="primary">
               Random Color
             </Button>
           </div>
@@ -177,7 +197,7 @@ class NewPaletteForm extends Component {
             color={this.state.currentColor}
             onChangeComplete={this.updateCurrentColor}
           />
-          <ValidatorForm onSubmit={this.addNewColor} ref='form'>
+          <ValidatorForm onSubmit={this.addNewColor} ref="form">
             <TextValidator
               value={this.state.newName}
               onChange={this.handleChange}
@@ -189,9 +209,9 @@ class NewPaletteForm extends Component {
               ]}
             />
             <Button
-              variant='contained'
-              type='submit'
-              color='primary'
+              variant="contained"
+              type="submit"
+              color="primary"
               style={{ backgroundColor: this.state.currentColor }}
             >
               Add Color
