@@ -23,7 +23,8 @@ const styles = theme => ({
     }),
     flexDirection: "row",
     justifyContent: "Space-between",
-    hight: "64px"
+    alignItems: "center",
+    height: "64px"
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -37,7 +38,15 @@ const styles = theme => ({
     marginLeft: 12,
     marginRight: 20
   },
-  navBtns: {}
+  navBtns: {
+    marginRight: "1rem",
+    "& a": {
+      textDecoration: "none"
+    }
+  },
+  button: {
+    margin: "0 0.5rem"
+  }
 });
 
 class PaletteFormNav extends Component {
@@ -58,7 +67,6 @@ class PaletteFormNav extends Component {
   }
   render() {
     const { classes, open, palettes, handleSubmit } = this.props;
-    const { newPaletteName } = this.state;
     return (
       <div className={classes.root}>
         <CssBaseline />
