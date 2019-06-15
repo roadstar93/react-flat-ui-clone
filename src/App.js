@@ -9,7 +9,6 @@ import NewPaletteForm from "./NewPaletteForm";
 import Page from "./Page";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -104,6 +103,17 @@ class App extends Component {
                         palette={generatePalette(
                           this.findPalette(routeProps.match.params.paletteId)
                         )}
+                      />
+                    </Page>
+                  )}
+                />
+                <Route
+                  render={routeProps => (
+                    <Page>
+                      <PaletteList
+                        palettes={this.state.palettes}
+                        {...routeProps}
+                        deletePalette={this.deletePalette}
                       />
                     </Page>
                   )}
