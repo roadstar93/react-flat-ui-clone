@@ -2,7 +2,7 @@
 
 This project was created while learning react.
 
-<p>The main ideea was to recreate <a href="https://flatuicolors.com/">Flat UI Colors</a>website and add some new features.
+<p>The main ideea was to recreate <a href="https://flatuicolors.com/">Flat UI Colors</a> website and add some new features.
 </p>
 
 <h2>Screenshots</h2>
